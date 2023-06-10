@@ -2,9 +2,9 @@
 #Chaining can be avoided or reduced by linear probing, meaning that if an index is used, it will move the key value pair
 # to the next closes available index.
 #Chaining, if it occurs, can have each key value pair linked to each other by linked lists, making it easier to traverse
-#Even though there are for loops in the code, setting the size to accomodate the proper number of index (reduce collision)
+#Even though there are for loops in the code, setting the size to accommodate the proper number of index (reduce collision)
 # will make it very efficient.
-
+#Using a dictionary in python also represents a very similar code that uses a hashtable.
 class HashTable:
     def __init__(self, size = 7):
         self.data_map = [None] * 7
