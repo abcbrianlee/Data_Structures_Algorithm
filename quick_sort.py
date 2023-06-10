@@ -13,4 +13,8 @@ def pivot(my_list, pivot_index, end_index):
     return swap_index
 
 def quick_sort(my_list, left, right):
-    pivot_index = pivot(my_list, left, right)
+    if left < right:
+        pivot_index = pivot(my_list, left, right)
+        quick_sort(my_list, left, pivot_index-1)
+        quick_sort(my_list, pivot_index+1, right)
+    return my_list
