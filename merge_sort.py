@@ -15,6 +15,7 @@ def merge(list1, list2):
             combined.append(list2[j])
             j += 1
     while i < len(list1):
+    #These last 2 while loops will combine remainder of list if the lists are uneven sizes
         combined.append(list1[i])
         i += 1
     while j < len(list2):
@@ -24,19 +25,12 @@ def merge(list1, list2):
 
 def merge_sort(my_list):
     #Merge_sort is very complicated. If you have a list [2,4,1,5,6,4] and use merge sort. Calling it for the first time we will refer to it as the original call stack.
-    #First, mid_index is 3 and left becomes [2,4,1]. Dont focus on doing right until left is all the way finished.
-    #Next, merge_sort is called on [2,4,1]. This is referred to as the 2nd call stack for the left side. index is 3/2=1.5 ->1. so [2,4,1] gets broken into left=[2] and right=[4,1].
-    #Dont focus on right (4,1) yet. Since left[2] is == 1, it gets returned. Now, go to previous right[4,1] and merge_sort.
-    #left becomes 4. it then gets sorted. Since that is done, now go to previous right ([1]) and sort. since it is also ==1, it get sorted.
-    #Now you have both Left and Right done. (Not on the original merge_sort, but on the 2nd call stack of merge sort). Since oyu have left and right, you can run merge([2], [4,1]).
-    #Running merge will set Left=[1,2,4] for the 'Original' call stack.
-
-    #Now you can start on the original call stack on the right.
-    #right = [5,6,3]. merge_sort that (2nd call stack on the right) and left = [5] and right =[6,3]. Merge_sort [5] and that gets sorted. Now return to [6,3]. Left = 6 and right = 3. Left gets sorted first. Since its ==1,
-    #it gets sorted. Now return back a step to right and sort right = [3]. Since [3] ==1. it gets sorted.
-    #Now you have finally sorted the original right and can run merge([5], [6,3]) = [3,5,6]
-
-    #Finally, you can run merge(left, right) on the original call stack as merge([1,2,4] and [3,5,6]) to get final answer =[1,2,3,4,5,6]
+    #Once we call merge sort , left = [2,4,1] and right = [5,6,4]
+    #Next, we call merge sort again. left = [2] right = [4,1]. Since len[2] == 1, we return [2] and we call merge on it. We then call merge_sort on [4,1]. left = 4 and right = 1
+    #we call merge on (4,1) and that gets sorted to [1,4]. we then call merge again on [1,4] and [2] and get [1,2,4] for the original merge_sort call stack.
+    #Now we move on to the other side. [5,6,4]. We call merge sort and left = [5] and right = [6,4]. Since left [5] == 1, it gets returned. merge sort gets called on [6,4] and turns into [6] and [4]
+    #merge gets called on [6] and [4] to become [6,4]. Then merge gets called on [5] and [6,4] to become [4,5,6].
+    #Finally the final merge  gets called on [2,4,1] and [4,5,6] to become [1,2,3,4,5,6]
     if len(my_list) == 1:
         return my_list
     mid_index = int(len(my_list)/2)

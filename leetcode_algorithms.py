@@ -34,6 +34,7 @@ def length_of_longest_substring(s):
 string = "abcabcbb"
 print("Length of longest substring: ", length_of_longest_substring(string))
 
+#Valid Parenthesis
 #Given a string (s) that contains either ( , ) ,{ , } ,[ and ], determine if input is valid or not.
 #Input is valid if : open brackets must be closed by the same type of bracket. They must be closed in same order.
 #s = [ '{, (, [ , {, } , ] , ), } '], is True. Even though there are nested brackets, they are closed in the same order.
@@ -136,3 +137,41 @@ int2 = 1240
 
 print("Is Int1 a palindrome?:",isPalindrome(int1), "Is int2 a palindrome?:",isPalindrome(int2))
 
+#Given two strings t and s, return True if they are anagrams or false is not
+#An anagram is a word that can be rearranged to form another word.
+def isAnagram(s, t):
+    sorted_s = sorted(s)
+    sorted_t = sorted(t)
+
+    if sorted_s == sorted_t:
+        return True
+    else:
+        return False
+string1 = "anagram"
+string2 = "nagaram"
+
+string3 = "Laptop"
+string4 = "Labtop"
+
+print("Is first word an anagram?:",isAnagram(string1,string2),"Is second word an anagram?:", isAnagram(string3,string4))
+
+#Remove duplicates from SORTED array
+#Given integer array (nums) sorted in increasing order, remove duplicates in place so that each element is unique.Return the number of elements in nums
+#Ex. input = [1,1,2]. Output: 2, nums=[1,2]
+#ex. input = [0,0,1,1,1,2,2,3,3,4]. Output: 5, nums[0,1,2,3,4]
+
+def removeDuplicates(nums):
+    if len(nums) == 0:
+        return 0
+
+    k = 1  # Initialize unique elements count
+    for i in range(1, len(nums)):
+        if nums[i] != nums[i - 1]:
+        #If nums[i] is not equal to previous nums [i], meaning that we have a new unique integer
+            nums[k] = nums[i]
+            #We are setting the old repeating nums to the new unique nums
+            k += 1
+    return k
+
+list1 = [1,1,2,2,3,3,4,4,5]
+print("Output: ",removeDuplicates(list1))

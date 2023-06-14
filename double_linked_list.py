@@ -146,6 +146,7 @@ my_double_linked_list.append(5)
 my_double_linked_list.prepend(10)
 my_double_linked_list.set_value(1,69)
 my_double_linked_list.insert(1,444)
+
 my_double_linked_list.print_list()
 
 
